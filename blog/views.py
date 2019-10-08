@@ -43,12 +43,25 @@ def post_edit(request, pk):
 class Emprestimo(View):
 
     def get(self, request):
-        response = requests.get('http://suabi-api3.herokuapp.com/copia/')
+        
+        if 'copia' in request.META['QUERY_STRING']:
+            g_copia = request.GET['copia']
+        else:
+            g_copia = ''
+
+        if 'usuario' in request.META['QUERY_STRING']:
+            g_usuario = request.GET['usuario'] 
+        else:    
+            g_usuario = ''
+
+        response = requests.get('http://suabi-api3.herokuapp.com/copia/?search=' + g_copia)
         copia = response.json()
-        response = requests.get('http://suabi-api3.herokuapp.com/usuario/')
+        response = requests.get('http://suabi-api3.herokuapp.com/usuario/?search=' + g_usuario)
         usuario = response.json()
         return render(request, 'blog/emprestimo.html', {
-            'copia': copia, 'usuario': usuario
+            'copia': copia, 'usuario': usuario,
+            'g_copia': g_copia,
+            'g_usuario': g_usuario
         })
 
     def post(self, request):

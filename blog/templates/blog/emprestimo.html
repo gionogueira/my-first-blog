@@ -5,9 +5,9 @@
 <div class="row mt-5 ml-2">
     <div class="col-6">
         <form method="GET" id="search-form" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" id="search" name="search" placeholder="Livro" aria-label="Livro">
+            <input class="form-control mr-sm-2" type="text" id="search" name="copia" value="{{g_copia}}" placeholder="Livro" aria-label="Livro">
             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
+       
         <table class="table table-hover mt-3">
             <thead>
                 <tr>
@@ -33,12 +33,13 @@
             {% endfor %}
         </table>
     </div>
-
+        
     <div class="col-6">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Usuário" aria-label="Usuário">
+        <div method="GET" id="search-form" class="form-inline my-2 my-lg-0">    
+            <input class="form-control mr-sm-2" type="text" id="search" name="usuario" value="{{g_usuario}}" placeholder="Usuario" aria-label="Usuario">
             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Buscar</button>
-        </form>
+        </div>    
+    </form>
         <table class="table table-hover mt-3">
             <thead>
                 <tr>
