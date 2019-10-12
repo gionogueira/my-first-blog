@@ -3,70 +3,31 @@
 {% block content %}
 
 <div class="row mt-5 ml-2">
+    
     <div class="col-6">
-        <form method="GET" id="search-form" class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" id="search" name="copia" value="{{g_copia}}" placeholder="Livro" aria-label="Livro">
-            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Buscar</button>
-       
-        <table class="table table-hover mt-3">
-            <thead>
-                <tr>
-                    <th scope="col">Título</th>
-                    <th scope="col">Editora</th>
-                    <th scope="col">Ano</th>
-                    <th scope="col">Cópia</th>
-                    <th scope="col">Selecionar</th>
-                </tr>
-            </thead>
-            {%  for copy in copia %}
-                <tbody>
-                    <tr>
-                        <td>{{ copy.livro.titulo }}</td>
-                        <td>{{ copy.livro.editora }}</td>
-                        <td>{{ copy.livro.ano }}</td>
-                        <td>{{ copy.num }}</td>
-                        <td>
-                            <input class="form-check-input ml-5 mt-2" type="checkbox" value="check" id="defaultCheck1">
-                        </td>
-                    </tr>
-                </tbody>
-            {% endfor %}
-        </table>
-    </div>
         
-    <div class="col-6">
-        <div method="GET" id="search-form" class="form-inline my-2 my-lg-0">    
-            <input class="form-control mr-sm-2" type="text" id="search" name="usuario" value="{{g_usuario}}" placeholder="Usuario" aria-label="Usuario">
-            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Buscar</button>
-        </div>    
-    </form>
-        <table class="table table-hover mt-3">
-            <thead>
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Vínculo</th>
-                    <th scope="col">Matrícula</th>
-                    <th scope="col">Curso</th>
-                    <th scope="col">Selecionar</th>
-                </tr>
-            </thead>
-            {%  for user in usuario %}
-                <tbody>
-                    <tr>
-                        <td>{{ user.nome }}</td>
-                        <td>{{ user.vinculo.nome }}</td>
-                        <td>{{ user.matricula }}</td>
-                        <td>{{ user.curso }}</td>
-                        <td>
-                            <input class="form-check-input ml-5 mt-4" type="checkbox" value="" id="defaultCheck1">
-                        </td>
-                    </tr>
-                </tbody>
+        <select class="js-example-basic-single" name="copia">
+            <option value="usuario">Selecione Livro</option>
+            {%  for copy in copia %}
+                <option value="usuario">{{ copy.livro.titulo }}</option>
             {% endfor %}
-        </table>
+        </select>    
+        
     </div>
+   
+    <div class="col-6">
+            
+        <select class="js-example-basic-single" name="usuario">
+            <option value="usuario">Selecione Usuário</option>
+            {%  for user in usuario %}
+                <option value="usuario">{{ user.nome }}</option>
+            {% endfor %}
+        </select> 
+
+    </div>
+    
     <div>
-        <button method="POST" class="btn btn-success mt-3" style="margin-left: 1040px;" type="submit">Confirmar</button>
+        <button method="POST" class="btn btn-success mt-3" style="margin-left: 1040px;" name="emprestimo" value="{{emprestimo}}" type="submit">Confirmar</button>
     </div>    
 </div>
 {% endblock %}    
