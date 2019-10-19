@@ -53,7 +53,8 @@ class Emprestimo(View):
         })
 
     def post(self, request):
-        response = requests.post('http://suabi-api3.herokuapp.com/emprestimo/')
+        post_data = {"copia": request.POST['copia'], "usuario":request.POST['usuario']}        
+        response = requests.post('http://suabi-api3.herokuapp.com/emprestimo/', data=post_data)
         emprestimo = response.json()
         return render(request, 'blog/emprestimo.html', {
             'emprestimo': emprestimo

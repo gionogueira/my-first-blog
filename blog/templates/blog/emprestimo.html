@@ -1,15 +1,16 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-
+<form method="POST" action="{% url 'emprestimo' %}">
+{% csrf_token %}
 <div class="row mt-5 ml-2">
     
     <div class="col-6">
         
         <select class="js-example-basic-single" name="copia">
-            <option value="usuario">Selecione Livro</option>
+            <option value="copia">Selecione Livro</option>
             {%  for copy in copia %}
-                <option value="usuario">{{ copy.livro.titulo }}</option>
+                <option value="{{ copy.id }}">{{ copy.livro.titulo }}</option>
             {% endfor %}
         </select>    
         
@@ -20,14 +21,15 @@
         <select class="js-example-basic-single" name="usuario">
             <option value="usuario">Selecione Usuário</option>
             {%  for user in usuario %}
-                <option value="usuario">{{ user.nome }}</option>
+                <option value="{{ user.id }}">{{ user.nome }}</option>
             {% endfor %}
         </select> 
 
     </div>
     
     <div>
-        <button method="POST" class="btn btn-success mt-3" style="margin-left: 1040px;" name="emprestimo" value="{{emprestimo}}" type="submit">Confirmar</button>
+        <button method="POST" class="btn btn-success mt-3" style="margin-left: 1040px;" name="emprestimo" value="" type="submit">Confirmar</button>
     </div>    
 </div>
+</form>
 {% endblock %}    
