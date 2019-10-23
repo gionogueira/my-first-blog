@@ -49,3 +49,15 @@ h1, h2, h3, h4 {
 .post_edit{
     margin-top: 20px;
 }
+
+#pai div{
+    display: none;
+}
+
+#pai2 div{
+    display: none;
+}
+
+.card-body{
+    display: block !important;
+}

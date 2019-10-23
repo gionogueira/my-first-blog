@@ -7,24 +7,48 @@
     
     <div class="col-6">
         
-        <select class="js-example-basic-single" name="copia">
-            <option value="copia">Selecione Livro</option>
+        <select class="js-example-basic-single" id="copia" name="copia">
+            <option value="select">Selecione Livro</option>
             {%  for copy in copia %}
                 <option value="{{ copy.id }}">{{ copy.livro.titulo }}</option>
             {% endfor %}
-        </select>    
+        </select> 
+        
+        <div id="pai">
+            {%  for copy in copia %}
+                <div class="card mt-3" id="{{ copy.id }}" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ copy.livro.titulo }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ copy.livro.isbn }}</h6>
+                        <p class="card-text">{{ copy.livro.editora }}</p>
+                    </div>    
+                </div>
+            {% endfor %}
+        </div>    
         
     </div>
    
     <div class="col-6">
             
-        <select class="js-example-basic-single" name="usuario">
-            <option value="usuario">Selecione Usuário</option>
+        <select class="js-example-basic-single" id="usuario" name="usuario">
+            <option value="select2">Selecione Usuário</option>
             {%  for user in usuario %}
                 <option value="{{ user.id }}">{{ user.nome }}</option>
-            {% endfor %}
+            {% endfor %}    
         </select> 
 
+        <div id="pai2">
+            {%  for user in usuario %}    
+                <div class="card mt-3" id="{{ user.id }}" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ user.nome }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ user.matricula }}</h6>
+                        <p class="card-text">{{ user.curso }}</p>
+                    </div>    
+                </div>
+            {% endfor %}    
+        </div>    
+        
     </div>
     
     <div>

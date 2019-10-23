@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Post
 from .forms import PostForm
 import requests
+from django.contrib import messages
 from django.views.generic import View
 
 def post_list(request):
@@ -56,6 +57,7 @@ class Emprestimo(View):
         post_data = {"copia": request.POST['copia'], "usuario":request.POST['usuario']}        
         response = requests.post('http://suabi-api3.herokuapp.com/emprestimo/', data=post_data)
         emprestimo = response.json()
+        messages.success(request, 'Empréstimo efetuado com sucesso!')
         return render(request, 'blog/emprestimo.html', {
             'emprestimo': emprestimo
         })   
